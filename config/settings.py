@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'articles',
+    'pages'
 ]
 
 
@@ -78,7 +79,7 @@ TEMPLATES = [
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',   # Development uchun
+        'ENGINE': 'django.db.backends.sqlite3',   
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
@@ -146,10 +147,11 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  
 
+
+STATIC_URL = 'static/'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your_email@gmail.com'
-EMAIL_HOST_PASSWORD = 'your_password'
-DEFAULT_FROM_EMAIL = 'your_email@gmail.com'
+EMAIL_HOST_USER = 'ibrohimubaydullayev003@gmail.com'
+EMAIL_HOST_PASSWORD = 'jtxr hshe qtri hroh'  
