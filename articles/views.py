@@ -40,6 +40,5 @@ class ArticleCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-    # user superuser ekanini tekshirish
     def test_func(self):
         return self.request.user.is_superuser
