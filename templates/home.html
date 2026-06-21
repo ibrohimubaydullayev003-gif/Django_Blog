@@ -4,15 +4,39 @@
 {% block title %}Bosh sahifa{% endblock title %}
 
 {% block content %}
-    <br/>
-    <div class="jumbotron">
-        <h1 class="display-4">Assalom alaykum!</h1>
-{#        <img class="img-thumbnail" src="{% static 'assets/img/profile.png' %}" alt="Card image cap">#}
-        <p class="lead">Blogimizga xush kelibsiz.</p>
-        <hr class="my-4">
-        <p>Bu yerda siz dasturlash va dasturchilarga oid ma'lumotlardan xabardor bo'lib turasiz.</p>
-        <p class="lead">
-            <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}" role="button">Postlarni ko'rish</a>
-        </p>
+<div class="hero-card" style="max-width: 800px; margin: 40px auto; padding: 50px 40px; background-color: #ffffff; border-radius: 16px; border: 1px solid #eaeaea; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; text-align: center;">
+    
+    {# <img src="{% static 'assets/img/profile.png' %}" alt="Profil" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 3px solid #2563eb; padding: 3px;"> #}
+    
+    <h1 style="color: #0f172a; font-size: 42px; font-weight: 800; margin-bottom: 12px; letter-spacing: -1px;">
+        Assalomu alaykum!
+    </h1>
+    
+    <p style="color: #475569; font-size: 20px; font-weight: 500; margin-bottom: 24px;">
+        Blogimizga xush kelibsiz.
+    </p>
+    
+    <hr style="border: 0; height: 1px; background-color: #e2e8f0; width: 150px; margin: 0 auto 24px auto;">
+    
+    <p style="color: #64748b; font-size: 16px; line-height: 1.6; max-width: 550px; margin: 0 auto 35px auto;">
+        Bu yerda siz dasturlash va dasturchilarga oid eng qiziqarli ma'lumotlar, foydali maqolalar va yangiliklardan xabardor bo'lib turasiz.
+    </p>
+    
+    <div>
+        <a href="{% url 'article_list' %}" class="btn-primary-lg" style="display: inline-block; padding: 14px 32px; background-color: #2563eb; color: #ffffff; border-radius: 10px; font-size: 16px; font-weight: 600; text-decoration: none; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25); transition: all 0.2s ease;">
+            🚀 Postlarni ko'rish
+        </a>
     </div>
+</div>
+
+<style>
+    .btn-primary-lg:hover {
+        background-color: #1d4ed8 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35) !important;
+    }
+    .btn-primary-lg:active {
+        transform: translateY(0);
+    }
+</style>
 {% endblock content %}

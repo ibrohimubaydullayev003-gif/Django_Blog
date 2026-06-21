@@ -1,12 +1,182 @@
+
 {% extends 'base.html' %}
 
-{% load crispy_forms_tags %}
+{% block title %}Postni tahrirlash{% endblock title %}
 
 {% block content %}
-    <h1>Tahrirlash</h1>
-    <form method="post" enctype="multipart/form-data">{% csrf_token %}
-        {{ form.media }}
-        {{ form|crispy }}
-    <button class="btn btn-info ml-2" type="submit">Saqlash</button>
-    </form>
+
+<style>
+    body{
+        background:#f8fafc;
+        font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    }
+
+    .container{
+        max-width:900px;
+        margin:40px auto;
+        padding:20px;
+    }
+
+    .card{
+        background:#fff;
+        border-radius:20px;
+        overflow:hidden;
+        box-shadow:0 15px 40px rgba(0,0,0,.08);
+        border:1px solid #e2e8f0;
+    }
+
+    .card-header{
+        background:linear-gradient(135deg,#2563eb,#4f46e5);
+        color:white;
+        padding:25px 30px;
+    }
+
+    .card-header h1{
+        margin:0;
+        font-size:28px;
+    }
+
+    .card-body{
+        padding:30px;
+    }
+
+    label{
+        display:block;
+        margin-bottom:8px;
+        font-weight:700;
+        color:#1e293b;
+    }
+
+    input[type="text"],
+    input[type="file"],
+    textarea,
+    select{
+        width:100%;
+        padding:14px;
+        border:1px solid #dbe2ea;
+        border-radius:12px;
+        background:#f8fafc;
+        font-size:15px;
+        transition:.3s;
+        box-sizing:border-box;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus{
+        outline:none;
+        border-color:#2563eb;
+        background:white;
+        box-shadow:0 0 0 4px rgba(37,99,235,.15);
+    }
+
+    .form-group{
+        margin-bottom:22px;
+    }
+
+    .actions{
+        display:flex;
+        justify-content:space-between;
+        margin-top:25px;
+    }
+
+    .btn-back{
+        text-decoration:none;
+        padding:12px 18px;
+        border-radius:10px;
+        border:1px solid #dbe2ea;
+        color:#334155;
+        background:white;
+        font-weight:600;
+    }
+
+    .btn-save{
+        border:none;
+        padding:12px 22px;
+        border-radius:10px;
+        background:linear-gradient(135deg,#10b981,#059669);
+        color:white;
+        font-weight:700;
+        cursor:pointer;
+        box-shadow:0 8px 20px rgba(16,185,129,.25);
+    }
+
+    .btn-save:hover{
+        transform:translateY(-2px);
+    }
+
+    .cke{
+        border-radius:12px !important;
+        overflow:hidden;
+        border:1px solid #dbe2ea !important;
+    }
+</style>
+
+<div class="container">
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <h2 style="margin:0;color:#0f172a;">✏️ Maqolani tahrirlash</h2>
+
+        <a href="javascript:history.back()" class="btn-back">
+            ← Orqaga
+        </a>
+    </div>
+
+    <div class="card">
+
+        <div class="card-header">
+            <h1>Post ma'lumotlarini yangilash</h1>
+            <p style="margin-top:8px;opacity:.9;">
+                Kerakli maydonlarni tahrir qiling va saqlang.
+            </p>
+        </div>
+
+        <div class="card-body">
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{ form.media }}
+
+                <div class="form-group">
+                    <label>Sarlavha</label>
+                    {{ form.title }}
+                </div>
+
+                <div class="form-group">
+                    <label>Qisqacha mazmun</label>
+                    {{ form.summary }}
+                </div>
+
+                <div class="form-group">
+                    <label>Asosiy matn</label>
+                    {{ form.body }}
+                </div>
+
+                <div class="form-group">
+                    <label>Rasm</label>
+                    {{ form.photo }}
+                </div>
+
+                <div class="actions">
+
+                    <a href="javascript:history.back()" class="btn-back">
+                        Bekor qilish
+                    </a>
+
+                    <button type="submit" class="btn-save">
+                        💾 Saqlash
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
 {% endblock content %}
+

@@ -3,23 +3,146 @@
 {% block title %}Postlar{% endblock title %}
 
 {% block content %}
-{#    <div class="card-group">#}
-    {% for article in object_list %}
-        <div class="card" style="width: 50rem;">
-            <div class="card-header">
-                <span class="font-weight-bold"><a href="{% url 'article_detail' article.pk  %}"><h2>{{ article.title }}</h2></a></span>
-            </div>
-            {% if article.photo %}
-                <img class="card-img-top" src="{{ article.photo.url }}" alt="{{ article.title }}">
-            {%  endif %}
-            <div class="card-body">
-                {{ article.summary }}...<a href="{% url 'article_detail' article.pk  %}">batafsil</a>
-            </div>
-            <div class="card-footer text-left text-muted">
-                <span class="text-muted">muallif {{ article.author | title }} &middot; {{ article.date }}</span>
-            </div>
-{#        </div>#}
-        <br />
-    {% endfor %}
+
+<div style="
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 15px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #f8fafc;
+    min-height: 100vh;
+">
+
+    <!-- HEADER -->
+    <div style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:30px;
+    ">
+
+        <a href="javascript:history.back()" style="
+            padding:10px 16px;
+            border-radius:10px;
+            border:1px solid #e2e8f0;
+            background:#fff;
+            color:#334155;
+            text-decoration:none;
+            font-weight:600;
+            font-size:14px;
+            box-shadow:0 3px 10px rgba(0,0,0,0.04);
+        ">
+            ← Orqaga
+        </a>
+
+        <h2 style="
+            margin:0;
+            font-size:26px;
+            font-weight:800;
+            color:#0f172a;
+        ">
+            📚 Barcha maqolalar
+        </h2>
+
     </div>
+
+    <!-- POSTS -->
+    {% for article in object_list %}
+    <div style="
+        background:#fff;
+        border-radius:18px;
+        overflow:hidden;
+        margin-bottom:25px;
+        box-shadow:0 10px 30px rgba(0,0,0,0.06);
+        border:1px solid #eef2f7;
+        transition:0.2s;
+    ">
+
+        <!-- TITLE -->
+        <div style="padding:22px 24px;">
+            <a href="{% url 'article_detail' article.pk %}" style="text-decoration:none;">
+                <h3 style="
+                    margin:0;
+                    font-size:22px;
+                    font-weight:800;
+                    color:#0f172a;
+                    line-height:1.4;
+                ">
+                    {{ article.title }}
+                </h3>
+            </a>
+        </div>
+
+        <!-- IMAGE -->
+        {% if article.photo %}
+        <div style="
+            width:100%;
+            aspect-ratio: 16 / 9;
+            overflow:hidden;
+            background:#f1f5f9;
+            border-bottom:1px solid #eef2f7;
+        ">
+
+            <img src="{{ article.photo.url }}" alt="{{ article.title }}" style="
+                width:100%;
+                height:100%;
+                object-fit:cover;
+                display:block;
+            ">
+        </div>
+        {% endif %}
+
+        <!-- SUMMARY -->
+        <div style="
+            padding:20px 24px;
+            color:#475569;
+            font-size:15px;
+            line-height:1.7;
+        ">
+            {{ article.summary }}...
+            <a href="{% url 'article_detail' article.pk %}" style="
+                color:#2563eb;
+                font-weight:700;
+                text-decoration:none;
+                margin-left:6px;
+            ">
+                Batafsil →
+            </a>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:14px 24px;
+            background:#f8fafc;
+            border-top:1px solid #eef2f7;
+            font-size:13px;
+            color:#64748b;
+        ">
+            <div>✍️ <strong style="color:#334155;">{{ article.author|title }}</strong></div>
+            <div>📅 {{ article.date|date:"d M, Y | H:i" }}</div>
+        </div>
+
+    </div>
+
+    {% empty %}
+        <div style="
+            text-align:center;
+            padding:60px 20px;
+            background:#fff;
+            border-radius:16px;
+            border:1px solid #e2e8f0;
+            color:#64748b;
+        ">
+            <div style="font-size:40px;">📰</div>
+            <p style="margin-top:10px; font-size:16px;">
+                Hozircha hech qanday post yo‘q
+            </p>
+        </div>
+    {% endfor %}
+
+</div>
+
 {% endblock content %}

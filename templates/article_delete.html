@@ -1,8 +1,117 @@
+
 {% extends 'base.html' %}
+
+{% block title %}Postni o'chirish{% endblock title %}
+
 {% block content %}
-    <h1>Postni o'chirish</h1>
-        <form action="" method="post">{% csrf_token %}
-        <p>"{{ article.title }}" nomli postni o'chirishni istaysizmi?</p>
-        <button class="btn btn-danger ml-2" type="submit">Ha</button>
-    </form>
+
+<div style="
+    max-width:550px;
+    margin:70px auto;
+">
+
+    <div style="
+        background:#ffffff;
+        border-radius:18px;
+        overflow:hidden;
+        box-shadow:0 10px 30px rgba(0,0,0,.08);
+    ">
+
+        <!-- Header -->
+        <div style="
+            background:linear-gradient(135deg,#dc2626,#b91c1c);
+            padding:30px;
+            text-align:center;
+            color:white;
+        ">
+            <div style="
+                font-size:60px;
+                margin-bottom:10px;
+            ">
+                ⚠️
+            </div>
+
+            <h1 style="
+                margin:0;
+                font-size:28px;
+                font-weight:700;
+            ">
+                Postni o'chirish
+            </h1>
+        </div>
+
+        <!-- Body -->
+        <div style="padding:35px;text-align:center;">
+
+            <p style="
+                color:#475569;
+                font-size:16px;
+                line-height:1.8;
+                margin-bottom:25px;
+            ">
+                Siz rostdan ham quyidagi postni o'chirmoqchimisiz?
+            </p>
+
+            <div style="
+                background:#f8fafc;
+                border:1px solid #e2e8f0;
+                border-radius:12px;
+                padding:18px;
+                margin-bottom:30px;
+            ">
+                <strong style="
+                    color:#0f172a;
+                    font-size:18px;
+                ">
+                    "{{ article.title }}"
+                </strong>
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div style="
+                    display:flex;
+                    justify-content:center;
+                    gap:15px;
+                    flex-wrap:wrap;
+                ">
+
+                    <a href="javascript:history.back()"
+                       style="
+                       text-decoration:none;
+                       padding:12px 20px;
+                       border:1px solid #cbd5e1;
+                       border-radius:10px;
+                       color:#475569;
+                       font-weight:600;
+                       ">
+                        ← Bekor qilish
+                    </a>
+
+                    <button type="submit"
+                            style="
+                            border:none;
+                            background:#dc2626;
+                            color:white;
+                            padding:12px 20px;
+                            border-radius:10px;
+                            font-weight:600;
+                            cursor:pointer;
+                            box-shadow:0 4px 12px rgba(220,38,38,.25);
+                            ">
+                        🗑️ Ha, o'chirish
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
 {% endblock content %}
+
